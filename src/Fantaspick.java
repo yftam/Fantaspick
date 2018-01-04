@@ -5,27 +5,26 @@ public class Fantaspick {
 	public static void main(String[] args) throws Exception {
 		String fileName;
 		Scraper scrapper = new Scraper();
+		long startTime, endTime;
+		int scrapCount;
 
-
-
-
-		try {
-
-			
+		try {			
 			fileName = "Scrape.txt";
 			scrapper.createFile("E:\\_GitHub\\Fantaspick", fileName);
+			scrapCount =0;
 			
-
 			while (true) {
+				startTime = System.nanoTime();
 				scrapper.openFile(fileName);
-				for(int i = 0; i<6; i++) {
-					scrapper.startScrape("https://www.amazon.ca/gp/bestsellers/hi/ref=sv_hi_0"+i);
+				for(int i = 1; i<=5; i++) {
+					scrapper.startScrape("https://www.amazon.ca/gp/bestsellers/hi/ref=sv_hi_0#"+i);
 				}
 				scrapper.closeFile();
-				Thread.sleep(50000);		//1000 = 1 second
+				endTime = System.nanoTime();
+				System.out.println(new Date().toString()+(endTime-startTime)*0.000000001+" "+ scrapCount++);
+				Thread.sleep(30000);		//1000 = 1 second
 			
 			}//end while
-
 		
 
 		}catch (Exception e) {
