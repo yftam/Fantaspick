@@ -1,7 +1,6 @@
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
@@ -50,7 +49,7 @@ public class Scraper {
 				String itemReviewTimes = subelement1.select("div.a-icon-row a.a-size-small").text();// Number of Reviews
 				String itemPrime = subelement1.select("div.a-row i").attr("aria-label");// Prime?
 				printwrite.println(new Date().toString()+";"+itemName+";"+itemRating+";"+itemPrice+";"+itemReviewTimes+";"+itemPrime+itemID+itemImgURL);
-				//System.out.println(new Date().toString()+";"+itemID+";"+itemName);
+				System.out.println(new Date().toString()+";"+itemID+";"+itemName);
 			}
 		}
 	}
