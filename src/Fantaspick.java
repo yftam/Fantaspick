@@ -21,15 +21,15 @@ public class Fantaspick {
 				}
 				scrapper.closeFile();
 				endTime = System.nanoTime();
-				System.out.println(new Date().toString()+(endTime-startTime)*0.000000001+" "+ scrapCount++);
-				Thread.sleep(30000);		//1000 = 1 second
+				System.out.println(new Date().toString()+((endTime-startTime)*0.000000001+" ")+ scrapCount++);
+				Thread.sleep(3000);		//1000 = 1 second
 			
 			}//end while
 		
 
 		}catch (Exception e) {
-			//System.out.println(new Date());
-			//System.err.println(e);
+			System.out.println(new Date());
+			System.err.println(e);
 		}
 
 
