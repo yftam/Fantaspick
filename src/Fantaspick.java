@@ -28,8 +28,8 @@ public class Fantaspick {
 		
 
 		}catch (Exception e) {
-			System.out.println(new Date());
-			System.err.println(e);
+			//System.out.println(new Date());
+			//System.err.println(e);
 		}
 
 
