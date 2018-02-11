@@ -1,4 +1,5 @@
 import java.util.Date;
+import java.sql.*;
 
 public class Fantaspick {
 
@@ -7,35 +8,54 @@ public class Fantaspick {
 		Scraper scrapper = new Scraper();
 		long startTime, endTime;
 		int scrapCount;
+		DBConn dbConn;
+		
+		dbConn = new DBConn();		
+		dbConn.ConnectDB(); // connect to SQL DB
+		
+		
+/*		dbConn.ModDB("DELETE from Amz_Product_Details");
+		dbConn.QueryDB("SELECT * from Parameter_Settings");
+		dbConn.ModDB("INSERT INTO [dbo].[Parameter_Settings]([parameter_name],[parameter_value],[is_active],[created_by],[created_tms],[updated_by],[updated_tms])\r\n" + 
+					"     VALUES ('TEST_INSERT_FROM_CODE5','false',1,'test',GETDATE(),'test',GETDATE())");*/
+		
+				
+		//========================================= Scraping================================================
 
 		try {			
-			fileName = "Scrape.txt";
-			scrapper.createFile("E:\\_GitHub\\Fantaspick", fileName);
+		//	fileName = "Scrape.txt";
+		//	scrapper.createFile("E:\\_GitHub\\Fantaspick", fileName);
 			scrapCount =0;
 			
 			while (true) {
 				startTime = System.nanoTime();
-				scrapper.openFile(fileName);
-				for(int i = 1; i<=5; i++) {
-					scrapper.startScrape("https://www.amazon.ca/gp/bestsellers/hi/ref=sv_hi_0#"+i);
-				}
-				scrapper.closeFile();
+				//scrapper.openFile(fileName);
+	
+					//scrapper.startScrapeLvl1("https://www.amazon.ca/gp/new-releases/hi/ref=zg_bs_tab_t_bsnr#1", dbConn);
+//					scrapper.startScrape("https://www.amazon.ca/gp/new-releases/hi/ref=zg_bsnr_pg_2?ie=UTF8&pg=2", dbConn);
+//					scrapper.startScrape("https://www.amazon.ca/gp/new-releases/hi/ref=zg_bsnr_pg_3?ie=UTF8&pg=3", dbConn);
+//					scrapper.startScrape("https://www.amazon.ca/gp/new-releases/hi/ref=zg_bsnr_pg_4?ie=UTF8&pg=4", dbConn);
+//					scrapper.startScrape("https://www.amazon.ca/gp/new-releases/hi/ref=zg_bsnr_pg_5?ie=UTF8&pg=5", dbConn);
+//	
+				scrapper.startScrapeLvl2("a", dbConn);
+				//scrapper.closeFile();
 				endTime = System.nanoTime();
-				System.out.println(new Date().toString()+((endTime-startTime)*0.000000001+" ")+ scrapCount++);
+				System.out.println(new Date().toString()+" "+(endTime-startTime)*0.000000001+" "+ scrapCount++);
 				Thread.sleep(3000);		//1000 = 1 second
 			
 			}//end while
 		
 
 		}catch (Exception e) {
-			System.out.println(new Date());
-			System.err.println(e);
+			e.printStackTrace();
 		}
+
+		
 
 
 	}//end main
 
-
+	
 
 
 }//end class
