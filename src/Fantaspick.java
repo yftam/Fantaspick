@@ -27,23 +27,23 @@ public class Fantaspick {
 		//	scrapper.createFile("E:\\_GitHub\\Fantaspick", fileName);
 			scrapCount =0;
 			
-			while (true) {
+			//while (true) {
 				startTime = System.nanoTime();
 				//scrapper.openFile(fileName);
 	
-					//scrapper.startScrapeLvl1("https://www.amazon.ca/gp/new-releases/hi/ref=zg_bs_tab_t_bsnr#1", dbConn);
-//					scrapper.startScrape("https://www.amazon.ca/gp/new-releases/hi/ref=zg_bsnr_pg_2?ie=UTF8&pg=2", dbConn);
-//					scrapper.startScrape("https://www.amazon.ca/gp/new-releases/hi/ref=zg_bsnr_pg_3?ie=UTF8&pg=3", dbConn);
-//					scrapper.startScrape("https://www.amazon.ca/gp/new-releases/hi/ref=zg_bsnr_pg_4?ie=UTF8&pg=4", dbConn);
-//					scrapper.startScrape("https://www.amazon.ca/gp/new-releases/hi/ref=zg_bsnr_pg_5?ie=UTF8&pg=5", dbConn);
-//	
-				scrapper.startScrapeLvl2("a", dbConn);
+					scrapper.startScrapeLvl1("https://www.amazon.ca/gp/new-releases/hi/ref=zg_bs_tab_t_bsnr#1", dbConn);
+					scrapper.startScrapeLvl1("https://www.amazon.ca/gp/new-releases/hi/ref=zg_bsnr_pg_2?ie=UTF8&pg=2", dbConn);
+					scrapper.startScrapeLvl1("https://www.amazon.ca/gp/new-releases/hi/ref=zg_bsnr_pg_3?ie=UTF8&pg=3", dbConn);
+					scrapper.startScrapeLvl1("https://www.amazon.ca/gp/new-releases/hi/ref=zg_bsnr_pg_4?ie=UTF8&pg=4", dbConn);
+					scrapper.startScrapeLvl1("https://www.amazon.ca/gp/new-releases/hi/ref=zg_bsnr_pg_5?ie=UTF8&pg=5", dbConn);
+	
+	//			scrapper.startScrapeLvl2("a", dbConn);
 				//scrapper.closeFile();
 				endTime = System.nanoTime();
 				System.out.println(new Date().toString()+" "+(endTime-startTime)*0.000000001+" "+ scrapCount++);
-				Thread.sleep(3000);		//1000 = 1 second
+			//	Thread.sleep(3000);		//1000 = 1 second
 			
-			}//end while
+			//}//end while
 		
 
 		}catch (Exception e) {
