@@ -47,15 +47,14 @@ public class Scraper {
 				
 				//=== Item Name ===
 				String itemNameRaw = subelement1.select("a.a-link-normal div").text();// item name
-				String itemName = itemNameRaw.replace("'", ""); // remove ' so wont be confused with query
+				String itemName = itemNameRaw.replace("'", "''"); // remove ' so wont be confused with query
 
 				//=== Item ID ===
 				String[] itemIdNameParse = (subelement1.select("div.a-section a.a-link-normal").attr("href")).split("/");// itemID Aand Name to be prased by '/'
 				String itemID = itemIdNameParse[3]; // item ID
 				
 				//=== Item URL for more description ===
-				String itemURL = subelement1.select("div.a-section a.a-link-normal").attr("href");
-				System.out.println("www.amazon.ca"+itemURL);
+				String itemURL = "https://amazon.ca"+ subelement1.select("div.a-section a.a-link-normal").attr("href");
 								
 				//=== Item Rating ===
 				String itemRating = subelement1.select("div.a-icon-row a").attr("title");// rating		
@@ -78,7 +77,7 @@ public class Scraper {
 				
 				//System.out.println(itemName+";"+itemRating+";"+itemPrice+";"+itemReviewTimes+";"+itemPrime+";"+itemID+";"+itemImgURL);
 
-				//dbConn.ModDB("INSERT INTO [dbo].[Amz_Product_Details]([asin],[manufacturer_id],[category_id],[name],[product_description],[number_of_reviews],[star_rating],[current_regular_price],[current_sale_price],[percent_off],[historic_low_price],[historic_high_price],[in_stock],[stock_status],[free_1d],[free_2d],[free_2d_date],[sold_by],[is_active],[created_by],[created_tms],[updated_by],[updated_tms])VALUES('"+itemID+"',null,0,'"+itemName+"','"+itemURL+"',0,0.0,0.0,"+itemPrice+",null,0,0,0,0,null,null,null,'',1,'','','','')");
+				dbConn.ModDB("INSERT INTO [dbo].[Amz_Product_Details]([asin],[manufacturer_id],[category_id],[name],[product_description],[product_url],[number_of_reviews],[star_rating],[current_regular_price],[current_sale_price],[percent_off],[historic_low_price],[historic_high_price],[in_stock],[stock_status],[free_1d],[free_2d],[free_2d_date],[sold_by],[is_active],[created_by],[created_tms],[updated_by],[updated_tms])VALUES('"+itemID+"',null,0,'"+itemName+"','','"+itemURL+"',0,0.0,0.0,"+itemPrice+",null,0,0,0,0,null,null,null,'',1,'','','','')");
 
 
 			}
